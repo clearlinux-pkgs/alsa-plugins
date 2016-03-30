@@ -3,5 +3,4 @@
 pkgconfig(jack)
 pkgconfig(libavcodec)
 pkgconfig(libavutil)
-pkgconfig(libpulse)
 pkgconfig(speexdsp)

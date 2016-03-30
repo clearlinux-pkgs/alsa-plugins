@@ -4,15 +4,17 @@
 #
 Name     : alsa-plugins
 Version  : 1.1.0
-Release  : 1
+Release  : 2
 URL      : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.0.tar.bz2
 Source0  : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.0.tar.bz2
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: alsa-plugins-lib
+Requires: alsa-plugins-data
 BuildRequires : pkgconfig(alsa)
 BuildRequires : pkgconfig(dbus-1)
+BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(samplerate)
 BuildRequires : pkgconfig(sndfile)
 
@@ -22,9 +24,18 @@ Arcam AV Amplifier ALSA Control plugin
 This plugin exposes the controls for an Arcam AV amplifier
 (see: http://www.arcam.co.uk/) as an ALSA mixer device.
 
+%package data
+Summary: data components for the alsa-plugins package.
+Group: Data
+
+%description data
+data components for the alsa-plugins package.
+
+
 %package lib
 Summary: lib components for the alsa-plugins package.
 Group: Libraries
+Requires: alsa-plugins-data
 
 %description lib
 lib components for the alsa-plugins package.
@@ -50,11 +61,19 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 
+%files data
+%defattr(-,root,root,-)
+/usr/share/alsa/alsa.conf.d/50-pulseaudio.conf
+/usr/share/alsa/alsa.conf.d/99-pulseaudio-default.conf.example
+
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/alsa-lib/libasound_module_conf_pulse.so
 /usr/lib64/alsa-lib/libasound_module_ctl_arcam_av.so
 /usr/lib64/alsa-lib/libasound_module_ctl_oss.so
+/usr/lib64/alsa-lib/libasound_module_ctl_pulse.so
 /usr/lib64/alsa-lib/libasound_module_pcm_oss.so
+/usr/lib64/alsa-lib/libasound_module_pcm_pulse.so
 /usr/lib64/alsa-lib/libasound_module_pcm_upmix.so
 /usr/lib64/alsa-lib/libasound_module_pcm_usb_stream.so
 /usr/lib64/alsa-lib/libasound_module_pcm_vdownmix.so
