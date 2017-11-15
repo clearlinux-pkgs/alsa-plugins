@@ -4,7 +4,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.1.5
-Release  : 11
+Release  : 12
 URL      : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.5.tar.bz2
 Source0  : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.5.tar.bz2
 Summary  : No detailed summary available
@@ -17,6 +17,7 @@ BuildRequires : pkgconfig(dbus-1)
 BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(samplerate)
 BuildRequires : pkgconfig(sndfile)
+BuildRequires : speex-dev
 
 %description
 Arcam AV Amplifier ALSA Control plugin
@@ -49,7 +50,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1510755570
+export SOURCE_DATE_EPOCH=1510755638
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -61,7 +62,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1510755570
+export SOURCE_DATE_EPOCH=1510755638
 rm -rf %{buildroot}
 %make_install
 
@@ -81,6 +82,7 @@ rm -rf %{buildroot}
 /usr/lib64/alsa-lib/libasound_module_ctl_pulse.so
 /usr/lib64/alsa-lib/libasound_module_pcm_oss.so
 /usr/lib64/alsa-lib/libasound_module_pcm_pulse.so
+/usr/lib64/alsa-lib/libasound_module_pcm_speex.so
 /usr/lib64/alsa-lib/libasound_module_pcm_upmix.so
 /usr/lib64/alsa-lib/libasound_module_pcm_usb_stream.so
 /usr/lib64/alsa-lib/libasound_module_pcm_vdownmix.so
