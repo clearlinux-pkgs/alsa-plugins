@@ -1,4 +1,3 @@
 Configure miss: JACK
 Configure miss: AVCODEC
 Configure miss: avcodec_open in -lavcodec
-Configure miss: speexdsp
