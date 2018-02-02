@@ -4,7 +4,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.1.5
-Release  : 14
+Release  : 15
 URL      : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.5.tar.bz2
 Source0  : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.5.tar.bz2
 Summary  : No detailed summary available
