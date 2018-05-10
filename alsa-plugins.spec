@@ -4,7 +4,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.1.6
-Release  : 16
+Release  : 17
 URL      : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.6.tar.bz2
 Source0  : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.6.tar.bz2
 Summary  : No detailed summary available
