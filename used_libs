@@ -1,4 +1,5 @@
 libasound.so.2
+libavtp.so
 libc.so.6
 libpthread.so.0
 libpulse.so.0
