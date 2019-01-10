@@ -1,6 +1,6 @@
-Configure miss: jack >= 0.98
-Configure miss: libavcodec libavutil libavresample
+Configure miss: JACK
+Configure miss: LIBAV
 Configure miss: avcodec_open in -lavcodec
-Configure miss: jack >= 0.98
-Configure miss: libavcodec libavutil libavresample
+Configure miss: JACK
+Configure miss: LIBAV
 Configure miss: avcodec_open in -lavcodec
