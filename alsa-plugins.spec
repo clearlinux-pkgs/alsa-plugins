@@ -4,10 +4,10 @@
 #
 Name     : alsa-plugins
 Version  : 1.1.8
-Release  : 20
+Release  : 22
 URL      : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.8.tar.bz2
 Source0  : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.8.tar.bz2
-Summary  : No detailed summary available
+Summary  : Extra alsa plugins
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: alsa-plugins-data = %{version}-%{release}
@@ -23,10 +23,11 @@ BuildRequires : speex-dev
 BuildRequires : speexdsp-dev
 
 %description
-Arcam AV Amplifier ALSA Control plugin
-======================================
-This plugin exposes the controls for an Arcam AV amplifier
-(see: http://www.arcam.co.uk/) as an ALSA mixer device.
+JACK <--> ALSA PCM plugin
+=========================
+This plugin converts the ALSA API over JACK (Jack Audio Connection
+Kit, http://jackit.sf.net) API.  ALSA native applications can work
+transparently together with jackd for both playback and capture.
 
 %package data
 Summary: data components for the alsa-plugins package.
@@ -65,7 +66,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547096189
+export SOURCE_DATE_EPOCH=1547135317
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -87,7 +88,7 @@ cd ../buildavx2;
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1547096189
+export SOURCE_DATE_EPOCH=1547135317
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/alsa-plugins
 cp COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/COPYING
