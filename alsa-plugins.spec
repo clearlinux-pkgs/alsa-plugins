@@ -4,7 +4,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.1.8
-Release  : 22
+Release  : 23
 URL      : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.8.tar.bz2
 Source0  : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.8.tar.bz2
 Summary  : Extra alsa plugins
@@ -16,6 +16,8 @@ Requires: alsa-plugins-license = %{version}-%{release}
 BuildRequires : pkgconfig(alsa)
 BuildRequires : pkgconfig(avtp)
 BuildRequires : pkgconfig(dbus-1)
+BuildRequires : pkgconfig(libavcodec)
+BuildRequires : pkgconfig(libavutil)
 BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(samplerate)
 BuildRequires : pkgconfig(sndfile)
@@ -66,7 +68,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547135317
+export SOURCE_DATE_EPOCH=1556386325
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -88,7 +90,7 @@ cd ../buildavx2;
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1547135317
+export SOURCE_DATE_EPOCH=1556386325
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/alsa-plugins
 cp COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/COPYING
