@@ -1,5 +1,5 @@
 PKG_NAME := alsa-plugins
-URL = ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.8.tar.bz2
+URL = ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.9.tar.bz2
 ARCHIVES = 
 
 include ../common/Makefile.common
