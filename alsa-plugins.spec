@@ -4,7 +4,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.1.9
-Release  : 24
+Release  : 26
 URL      : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.9.tar.bz2
 Source0  : ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.9.tar.bz2
 Summary  : Extra alsa plugins
@@ -21,15 +21,15 @@ BuildRequires : pkgconfig(libavutil)
 BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(samplerate)
 BuildRequires : pkgconfig(sndfile)
-BuildRequires : speex-dev
-BuildRequires : speexdsp-dev
+BuildRequires : pkgconfig(speexdsp)
+BuildRequires : util-linux
 
 %description
-JACK <--> ALSA PCM plugin
-=========================
-This plugin converts the ALSA API over JACK (Jack Audio Connection
-Kit, http://jackit.sf.net) API.  ALSA native applications can work
-transparently together with jackd for both playback and capture.
+PulseAudio <--> ALSA plugins
+============================
+This plugin allows any program that uses the ALSA API to access a PulseAudio
+sound daemon. In other words, native ALSA applications can play and record
+sound across a network.
 
 %package data
 Summary: data components for the alsa-plugins package.
@@ -59,6 +59,7 @@ license components for the alsa-plugins package.
 
 %prep
 %setup -q -n alsa-plugins-1.1.9
+cd %{_builddir}/alsa-plugins-1.1.9
 pushd ..
 cp -a alsa-plugins-1.1.9 buildavx2
 popd
@@ -67,8 +68,9 @@ popd
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1557493457
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1572463891
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -88,7 +90,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 make  %{?_smp_mflags}
 popd
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -97,11 +99,11 @@ cd ../buildavx2;
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1557493457
+export SOURCE_DATE_EPOCH=1572463891
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/alsa-plugins
-cp COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/COPYING
-cp COPYING.GPL %{buildroot}/usr/share/package-licenses/alsa-plugins/COPYING.GPL
+cp %{_builddir}/alsa-plugins-1.1.9/COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/597bf5f9c0904bd6c48ac3a3527685818d11246d
+cp %{_builddir}/alsa-plugins-1.1.9/COPYING.GPL %{buildroot}/usr/share/package-licenses/alsa-plugins/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
 pushd ../buildavx2/
 %make_install_avx2
 popd
@@ -165,5 +167,5 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/alsa-plugins/COPYING
-/usr/share/package-licenses/alsa-plugins/COPYING.GPL
+/usr/share/package-licenses/alsa-plugins/597bf5f9c0904bd6c48ac3a3527685818d11246d
+/usr/share/package-licenses/alsa-plugins/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
