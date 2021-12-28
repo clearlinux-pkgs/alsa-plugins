@@ -1,6 +1,2 @@
 Configure miss: JACK
 Configure miss: JACK
-Configure miss: LIBAV
-Configure miss: LIBAV
-Configure miss: avcodec_open in -lavcodec
-Configure miss: avcodec_open in -lavcodec

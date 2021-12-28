@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x8380596DA6E59C91 (release@alsa-project.org)
 #
 Name     : alsa-plugins
-Version  : 1.2.5
-Release  : 36
-URL      : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.5.tar.bz2
-Source0  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.5.tar.bz2
-Source1  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.5.tar.bz2.sig
+Version  : 1.2.6
+Release  : 37
+URL      : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2
+Source0  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2
+Source1  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2.sig
 Summary  : Extra alsa plugins
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -23,6 +23,7 @@ BuildRequires : pkgconfig(dbus-1)
 BuildRequires : pkgconfig(libavcodec)
 BuildRequires : pkgconfig(libavutil)
 BuildRequires : pkgconfig(libpulse)
+BuildRequires : pkgconfig(libswresample)
 BuildRequires : pkgconfig(samplerate)
 BuildRequires : pkgconfig(sndfile)
 BuildRequires : pkgconfig(speexdsp)
@@ -70,10 +71,10 @@ license components for the alsa-plugins package.
 
 
 %prep
-%setup -q -n alsa-plugins-1.2.5
-cd %{_builddir}/alsa-plugins-1.2.5
+%setup -q -n alsa-plugins-1.2.6
+cd %{_builddir}/alsa-plugins-1.2.6
 pushd ..
-cp -a alsa-plugins-1.2.5 buildavx2
+cp -a alsa-plugins-1.2.6 buildavx2
 popd
 
 %build
@@ -81,7 +82,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634663773
+export SOURCE_DATE_EPOCH=1640733766
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -113,11 +114,11 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1634663773
+export SOURCE_DATE_EPOCH=1640733766
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/alsa-plugins
-cp %{_builddir}/alsa-plugins-1.2.5/COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/597bf5f9c0904bd6c48ac3a3527685818d11246d
-cp %{_builddir}/alsa-plugins-1.2.5/COPYING.GPL %{buildroot}/usr/share/package-licenses/alsa-plugins/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
+cp %{_builddir}/alsa-plugins-1.2.6/COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/597bf5f9c0904bd6c48ac3a3527685818d11246d
+cp %{_builddir}/alsa-plugins-1.2.6/COPYING.GPL %{buildroot}/usr/share/package-licenses/alsa-plugins/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
 pushd ../buildavx2/
 %make_install_v3
 popd
@@ -129,11 +130,13 @@ popd
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/alsa/alsa.conf.d/10-rate-lav.conf
 /usr/share/alsa/alsa.conf.d/10-samplerate.conf
 /usr/share/alsa/alsa.conf.d/10-speexrate.conf
 /usr/share/alsa/alsa.conf.d/50-arcam-av-ctl.conf
 /usr/share/alsa/alsa.conf.d/50-oss.conf
 /usr/share/alsa/alsa.conf.d/50-pulseaudio.conf
+/usr/share/alsa/alsa.conf.d/60-a52-encoder.conf
 /usr/share/alsa/alsa.conf.d/60-speex.conf
 /usr/share/alsa/alsa.conf.d/60-upmix.conf
 /usr/share/alsa/alsa.conf.d/60-vdownmix.conf
@@ -149,6 +152,7 @@ popd
 /usr/lib64/alsa-lib/libasound_module_ctl_arcam_av.so
 /usr/lib64/alsa-lib/libasound_module_ctl_oss.so
 /usr/lib64/alsa-lib/libasound_module_ctl_pulse.so
+/usr/lib64/alsa-lib/libasound_module_pcm_a52.so
 /usr/lib64/alsa-lib/libasound_module_pcm_aaf.so
 /usr/lib64/alsa-lib/libasound_module_pcm_oss.so
 /usr/lib64/alsa-lib/libasound_module_pcm_pulse.so
@@ -156,6 +160,11 @@ popd
 /usr/lib64/alsa-lib/libasound_module_pcm_upmix.so
 /usr/lib64/alsa-lib/libasound_module_pcm_usb_stream.so
 /usr/lib64/alsa-lib/libasound_module_pcm_vdownmix.so
+/usr/lib64/alsa-lib/libasound_module_rate_lavrate.so
+/usr/lib64/alsa-lib/libasound_module_rate_lavrate_fast.so
+/usr/lib64/alsa-lib/libasound_module_rate_lavrate_faster.so
+/usr/lib64/alsa-lib/libasound_module_rate_lavrate_high.so
+/usr/lib64/alsa-lib/libasound_module_rate_lavrate_higher.so
 /usr/lib64/alsa-lib/libasound_module_rate_samplerate.so
 /usr/lib64/alsa-lib/libasound_module_rate_samplerate_best.so
 /usr/lib64/alsa-lib/libasound_module_rate_samplerate_linear.so
