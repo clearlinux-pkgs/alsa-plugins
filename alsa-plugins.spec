@@ -6,7 +6,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.2.6
-Release  : 38
+Release  : 39
 URL      : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2
 Source0  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2
 Source1  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2.sig
