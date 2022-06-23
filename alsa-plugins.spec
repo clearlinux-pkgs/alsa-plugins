@@ -6,7 +6,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.2.6
-Release  : 40
+Release  : 41
 URL      : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2
 Source0  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2
 Source1  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2.sig
@@ -14,7 +14,6 @@ Summary  : Extra alsa plugins
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: alsa-plugins-data = %{version}-%{release}
-Requires: alsa-plugins-filemap = %{version}-%{release}
 Requires: alsa-plugins-lib = %{version}-%{release}
 Requires: alsa-plugins-license = %{version}-%{release}
 BuildRequires : pkgconfig(alsa)
@@ -43,20 +42,11 @@ Group: Data
 data components for the alsa-plugins package.
 
 
-%package filemap
-Summary: filemap components for the alsa-plugins package.
-Group: Default
-
-%description filemap
-filemap components for the alsa-plugins package.
-
-
 %package lib
 Summary: lib components for the alsa-plugins package.
 Group: Libraries
 Requires: alsa-plugins-data = %{version}-%{release}
 Requires: alsa-plugins-license = %{version}-%{release}
-Requires: alsa-plugins-filemap = %{version}-%{release}
 
 %description lib
 lib components for the alsa-plugins package.
@@ -82,15 +72,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640733766
+export SOURCE_DATE_EPOCH=1656004919
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -114,7 +104,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1640733766
+export SOURCE_DATE_EPOCH=1656004919
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/alsa-plugins
 cp %{_builddir}/alsa-plugins-1.2.6/COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/597bf5f9c0904bd6c48ac3a3527685818d11246d
@@ -123,7 +113,7 @@ pushd ../buildavx2/
 %make_install_v3
 popd
 %make_install
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -141,10 +131,6 @@ popd
 /usr/share/alsa/alsa.conf.d/60-upmix.conf
 /usr/share/alsa/alsa.conf.d/60-vdownmix.conf
 /usr/share/alsa/alsa.conf.d/98-usb-stream.conf
-
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-alsa-plugins
 
 %files lib
 %defattr(-,root,root,-)
@@ -173,7 +159,31 @@ popd
 /usr/lib64/alsa-lib/libasound_module_rate_speexrate.so
 /usr/lib64/alsa-lib/libasound_module_rate_speexrate_best.so
 /usr/lib64/alsa-lib/libasound_module_rate_speexrate_medium.so
-/usr/share/clear/optimized-elf/lib*
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_conf_pulse.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_ctl_arcam_av.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_ctl_oss.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_ctl_pulse.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_a52.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_aaf.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_oss.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_pulse.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_speex.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_upmix.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_usb_stream.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_vdownmix.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_lavrate.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_lavrate_fast.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_lavrate_faster.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_lavrate_high.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_lavrate_higher.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_samplerate.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_samplerate_best.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_samplerate_linear.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_samplerate_medium.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_samplerate_order.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_speexrate.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_speexrate_best.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_speexrate_medium.so
 
 %files license
 %defattr(0644,root,root,0755)
