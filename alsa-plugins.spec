@@ -6,7 +6,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.2.6
-Release  : 41
+Release  : 42
 URL      : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2
 Source0  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2
 Source1  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2.sig
@@ -72,7 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656004919
+export SOURCE_DATE_EPOCH=1656089165
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -104,7 +104,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1656004919
+export SOURCE_DATE_EPOCH=1656089165
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/alsa-plugins
 cp %{_builddir}/alsa-plugins-1.2.6/COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/597bf5f9c0904bd6c48ac3a3527685818d11246d
@@ -159,31 +159,6 @@ popd
 /usr/lib64/alsa-lib/libasound_module_rate_speexrate.so
 /usr/lib64/alsa-lib/libasound_module_rate_speexrate_best.so
 /usr/lib64/alsa-lib/libasound_module_rate_speexrate_medium.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_conf_pulse.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_ctl_arcam_av.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_ctl_oss.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_ctl_pulse.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_a52.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_aaf.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_oss.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_pulse.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_speex.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_upmix.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_usb_stream.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_pcm_vdownmix.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_lavrate.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_lavrate_fast.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_lavrate_faster.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_lavrate_high.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_lavrate_higher.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_samplerate.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_samplerate_best.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_samplerate_linear.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_samplerate_medium.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_samplerate_order.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_speexrate.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_speexrate_best.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libasound_module_rate_speexrate_medium.so
 
 %files license
 %defattr(0644,root,root,0755)
