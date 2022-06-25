@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x8380596DA6E59C91 (release@alsa-project.org)
 #
 Name     : alsa-plugins
-Version  : 1.2.6
-Release  : 42
-URL      : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2
-Source0  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2
-Source1  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.6.tar.bz2.sig
+Version  : 1.2.7.1
+Release  : 43
+URL      : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2
+Source0  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2
+Source1  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2.sig
 Summary  : Extra alsa plugins
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -61,10 +61,10 @@ license components for the alsa-plugins package.
 
 
 %prep
-%setup -q -n alsa-plugins-1.2.6
-cd %{_builddir}/alsa-plugins-1.2.6
+%setup -q -n alsa-plugins-1.2.7.1
+cd %{_builddir}/alsa-plugins-1.2.7.1
 pushd ..
-cp -a alsa-plugins-1.2.6 buildavx2
+cp -a alsa-plugins-1.2.7.1 buildavx2
 popd
 
 %build
@@ -72,7 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656089165
+export SOURCE_DATE_EPOCH=1656127450
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -104,11 +104,11 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1656089165
+export SOURCE_DATE_EPOCH=1656127450
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/alsa-plugins
-cp %{_builddir}/alsa-plugins-1.2.6/COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/597bf5f9c0904bd6c48ac3a3527685818d11246d
-cp %{_builddir}/alsa-plugins-1.2.6/COPYING.GPL %{buildroot}/usr/share/package-licenses/alsa-plugins/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
+cp %{_builddir}/alsa-plugins-1.2.7.1/COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/597bf5f9c0904bd6c48ac3a3527685818d11246d
+cp %{_builddir}/alsa-plugins-1.2.7.1/COPYING.GPL %{buildroot}/usr/share/package-licenses/alsa-plugins/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
 pushd ../buildavx2/
 %make_install_v3
 popd
