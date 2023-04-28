@@ -7,7 +7,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.2.7.1
-Release  : 50
+Release  : 51
 URL      : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2
 Source0  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2
 Source1  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2.sig
@@ -77,7 +77,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682641070
+export SOURCE_DATE_EPOCH=1682699707
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -109,7 +109,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1682641070
+export SOURCE_DATE_EPOCH=1682699707
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/alsa-plugins
 cp %{_builddir}/alsa-plugins-%{version}/COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/597bf5f9c0904bd6c48ac3a3527685818d11246d || :
@@ -121,6 +121,23 @@ popd
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
+%defattr(-,root,root,-)
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/alsa/alsa.conf.d/10-rate-lav.conf
+/usr/share/alsa/alsa.conf.d/10-samplerate.conf
+/usr/share/alsa/alsa.conf.d/10-speexrate.conf
+/usr/share/alsa/alsa.conf.d/50-arcam-av-ctl.conf
+/usr/share/alsa/alsa.conf.d/50-oss.conf
+/usr/share/alsa/alsa.conf.d/50-pulseaudio.conf
+/usr/share/alsa/alsa.conf.d/60-a52-encoder.conf
+/usr/share/alsa/alsa.conf.d/60-speex.conf
+/usr/share/alsa/alsa.conf.d/60-upmix.conf
+/usr/share/alsa/alsa.conf.d/60-vdownmix.conf
+/usr/share/alsa/alsa.conf.d/98-usb-stream.conf
+
+%files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/alsa-lib/libasound_module_conf_pulse.so
 /V3/usr/lib64/alsa-lib/libasound_module_ctl_arcam_av.so
@@ -147,23 +164,6 @@ popd
 /V3/usr/lib64/alsa-lib/libasound_module_rate_speexrate.so
 /V3/usr/lib64/alsa-lib/libasound_module_rate_speexrate_best.so
 /V3/usr/lib64/alsa-lib/libasound_module_rate_speexrate_medium.so
-
-%files data
-%defattr(-,root,root,-)
-/usr/share/alsa/alsa.conf.d/10-rate-lav.conf
-/usr/share/alsa/alsa.conf.d/10-samplerate.conf
-/usr/share/alsa/alsa.conf.d/10-speexrate.conf
-/usr/share/alsa/alsa.conf.d/50-arcam-av-ctl.conf
-/usr/share/alsa/alsa.conf.d/50-oss.conf
-/usr/share/alsa/alsa.conf.d/50-pulseaudio.conf
-/usr/share/alsa/alsa.conf.d/60-a52-encoder.conf
-/usr/share/alsa/alsa.conf.d/60-speex.conf
-/usr/share/alsa/alsa.conf.d/60-upmix.conf
-/usr/share/alsa/alsa.conf.d/60-vdownmix.conf
-/usr/share/alsa/alsa.conf.d/98-usb-stream.conf
-
-%files lib
-%defattr(-,root,root,-)
 /usr/lib64/alsa-lib/libasound_module_conf_pulse.so
 /usr/lib64/alsa-lib/libasound_module_ctl_arcam_av.so
 /usr/lib64/alsa-lib/libasound_module_ctl_oss.so
