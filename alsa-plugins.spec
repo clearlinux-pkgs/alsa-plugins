@@ -7,7 +7,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.2.7.1
-Release  : 51
+Release  : 52
 URL      : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2
 Source0  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2
 Source1  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2.sig
@@ -77,15 +77,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682699707
+export SOURCE_DATE_EPOCH=1685477846
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -109,7 +109,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1682699707
+export SOURCE_DATE_EPOCH=1685477846
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/alsa-plugins
 cp %{_builddir}/alsa-plugins-%{version}/COPYING %{buildroot}/usr/share/package-licenses/alsa-plugins/597bf5f9c0904bd6c48ac3a3527685818d11246d || :
@@ -152,18 +152,8 @@ popd
 /V3/usr/lib64/alsa-lib/libasound_module_pcm_usb_stream.so
 /V3/usr/lib64/alsa-lib/libasound_module_pcm_vdownmix.so
 /V3/usr/lib64/alsa-lib/libasound_module_rate_lavrate.so
-/V3/usr/lib64/alsa-lib/libasound_module_rate_lavrate_fast.so
-/V3/usr/lib64/alsa-lib/libasound_module_rate_lavrate_faster.so
-/V3/usr/lib64/alsa-lib/libasound_module_rate_lavrate_high.so
-/V3/usr/lib64/alsa-lib/libasound_module_rate_lavrate_higher.so
 /V3/usr/lib64/alsa-lib/libasound_module_rate_samplerate.so
-/V3/usr/lib64/alsa-lib/libasound_module_rate_samplerate_best.so
-/V3/usr/lib64/alsa-lib/libasound_module_rate_samplerate_linear.so
-/V3/usr/lib64/alsa-lib/libasound_module_rate_samplerate_medium.so
-/V3/usr/lib64/alsa-lib/libasound_module_rate_samplerate_order.so
 /V3/usr/lib64/alsa-lib/libasound_module_rate_speexrate.so
-/V3/usr/lib64/alsa-lib/libasound_module_rate_speexrate_best.so
-/V3/usr/lib64/alsa-lib/libasound_module_rate_speexrate_medium.so
 /usr/lib64/alsa-lib/libasound_module_conf_pulse.so
 /usr/lib64/alsa-lib/libasound_module_ctl_arcam_av.so
 /usr/lib64/alsa-lib/libasound_module_ctl_oss.so
