@@ -1,0 +1,17 @@
+/etc/:
+/etc/alsa/conf.d:
+/etc/alsa:
+10-rate-lav.conf
+10-samplerate.conf
+10-speexrate.conf
+50-arcam-av-ctl.conf
+50-oss.conf
+50-pulseaudio.conf
+60-a52-encoder.conf
+60-speex.conf
+60-upmix.conf
+60-vdownmix.conf
+98-usb-stream.conf
+99-pulseaudio-default.conf.example
+alsa
+conf.d
