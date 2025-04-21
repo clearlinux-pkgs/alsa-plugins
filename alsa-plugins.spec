@@ -9,7 +9,7 @@
 #
 Name     : alsa-plugins
 Version  : 1.2.12
-Release  : 83
+Release  : 84
 URL      : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.12.tar.bz2
 Source0  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.12.tar.bz2
 Source1  : https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.12.tar.bz2.sig
